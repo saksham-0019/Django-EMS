@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filter Employee</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: url('https://i.pinimg.com/736x/b8/ac/64/b8ac64ec34bfc4d1a6a7e04d2cf11788.jpg') no-repeat center center/cover;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #fff;
+            overflow: hidden;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(15px);
+            color: #333;
+            border-radius: 15px;
+            padding: 30px 50px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 500px;
+            text-align: center;
+            animation: fadeInUp 1.2s ease-out;
+        }
+
+        h1 {
+            color: #2d95e5;
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+
+        hr {
+            border: 0;
+            height: 1px;
+            background: #ddd;
+            margin: 15px 0;
+        }
+
+        label {
+            font-size: 1rem;
+            margin-bottom: 5px;
+            display: inline-block;
+            color: #2d95e5;
+            font-weight: 500;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            outline: none;
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(10px);
+        }
+
+        input[type="text"]:focus {
+            border: 2px solid #2db0e5;
+        }
+
+        button {
+            padding: 12px 25px;
+            background: rgba(45, 176, 229, 0.9);
+            color: white;
+            font-size: 1.2rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+
+        button:hover {
+            background: rgba(29, 135, 195, 0.9);
+            transform: translateY(-3px);
+        }
+
+        button:active {
+            transform: translateY(1px);
+        }
+
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px 30px;
+                width: 90%;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Filter Employee Details</h1>
+        <hr>
+        <form action="/filter_emp" method="post">
+            {% csrf_token %}
+            <div>
+                <label for="name">Employee First/Last Name</label>
+                <input type="text" id="name" name="name" value="{{ name }}">
+            </div>
+            <div>
+                <label for="dept">Department</label>
+                <input type="text" id="dept" name="dept" value="{{ dept }}">
+            </div>
+            <div>
+                <label for="role">Role</label>
+                <input type="text" id="role" name="role" value="{{ role }}">
+            </div>
+            <hr>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</body>
+</html>
